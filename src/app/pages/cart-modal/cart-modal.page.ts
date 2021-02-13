@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { CartService, Product } from 'src/app/services/cart.service';
 
@@ -11,7 +12,7 @@ export class CartModalPage implements OnInit {
 
   cart: Product[] = [];
 
-  constructor(private cartService: CartService, private modalCart: ModalController) { }
+  constructor(private cartService: CartService, private modalCart: ModalController, private route: Router) { }
 
   ngOnInit() {
     this.cart = this.cartService.getCart();
@@ -37,6 +38,13 @@ export class CartModalPage implements OnInit {
     this.modalCart.dismiss();
   }
 
-  checkout() {}
+  checkout() {
+    let total = this.getTotal();
+
+    if (total > 0) {
+      this.modalCart.dismiss();
+      this.route.navigate(['/form']);
+    }
+  }
 
 }
