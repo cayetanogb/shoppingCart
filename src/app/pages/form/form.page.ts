@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { CartService } from 'src/app/services/cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -17,7 +19,7 @@ export class FormPage implements OnInit {
   email: FormControl;
   telefono: FormControl;
 
-  constructor(public toast: ToastController) { }
+  constructor(public toast: ToastController, private cartService: CartService, private route: Router) { }
 
   ngOnInit() {
     this.createForm();
@@ -40,9 +42,15 @@ export class FormPage implements OnInit {
       pedido.present();
 
       setTimeout(function(){
-        Swal.fire('Gracias por la compra');
+        Swal(
+          'Pedido realizado',
+          'Gracias por la compra',
+          'success');
       }, 2000);
     }
+
+    this.cartService.reset();
+    this.route.navigate(['/home']);
   }
 
   createForm() {

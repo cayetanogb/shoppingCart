@@ -79,4 +79,9 @@ export class CartService {
     }
   }
 
+  reset() {
+    this.cart = [];
+    this.cartItemCount.next(0);
+  }
+
 }
