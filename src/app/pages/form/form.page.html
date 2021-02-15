@@ -8,30 +8,30 @@
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="enviar()">
+  <form (ngSubmit)="enviar()" novalidate [formGroup]="form">
     <ion-item>
       <ion-label>Nombre:</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" class="form-control" formControlName="nombre"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Apellidos:</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" class="form-control" formControlName="apellidos"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Direccion:</ion-label>
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" class="form-control" formControlName="direccion"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Email:</ion-label>
-      <ion-input type="email"></ion-input>
+      <ion-input type="email" class="form-control" formControlName="email"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label>Telefono:</ion-label>
-      <ion-input type="number"></ion-input>
+      <ion-input type="number" class="form-control" formControlName="telefono"></ion-input>
     </ion-item>
 
     <ion-item lines="none">
